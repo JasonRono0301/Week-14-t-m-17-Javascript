@@ -478,3 +478,77 @@ var words = [
 	"zeker",
 	"zever",
 	"zeeen"];
+
+	var vakjes;
+
+	var row1 = document.getElementById("rij1");
+
+	for(vakjes = 0; vakjes<25; vakjes++){
+		var newDiv = document.createElement("input");
+		newDiv.type = "text";
+		newDiv.readOnly;
+		rij1.appendChild(newDiv);
+		newDiv.style.background = "white";
+    	newDiv.style.verticalAlign = top;
+    	newDiv.style.marginTop = 4;
+    	newDiv.style.display = "inline-block";
+    	newDiv.style.height = '1.25em';
+    	newDiv.style.width = '1.25em';
+    	newDiv.style.textAlign = 'center';
+    	newDiv.style.fontSize = '3.5em';
+		newDiv.style.fontFamily = 'Lato', 'sans-serif';
+		newDiv.id += 'vakje'+ vakjes;
+	
+	}
+
+
+	var randomwoord = words[Math.floor(Math.random()* words.length)];
+
+	var textArray = randomwoord.split('');
+		document.getElementById("vakje0").value = textArray[0];
+		console.log(textArray);
+
+	var raden = document.createElement("input");
+	var check = document.createElement("check");
+	document.body.appendChild(raden);
+	document.body.appendChild(check);
+	raden.style.marginLeft = "50%";
+	check.innerHTML = "Check";
+
+function check(){
+
+	for (i = 0; i < random.length; i++) {
+		if(checkWoord[i] == random[i]) {
+			document.getElementById("vakje" + (i+1)).innerHTML = random[i];
+			document.getElementById("vakje" + (i+1)).style.backgroundColor = "green";
+			raadWoord[i] = "*";
+		} else if (raadWoord.indexOf(checkWoord[i])>-1) {
+			document.getElementById("vakje" + (i+1)).innerHTML = checkWoord[i];
+			document.getElementById("vakje" + (i+1)).style.backgroundColor = "yellow";
+		} else {
+			document.getElementById("vakje" + (i+1)).innerHTML = checkWoord[i];
+			document.getElementById("vakje" + (i+1)).style.backgroundColor = "red";
+		}
+	}
+
+}
+
+
+
+
+
+
+
+	
+
+
+
+
+
+	
+
+
+
+
+
+

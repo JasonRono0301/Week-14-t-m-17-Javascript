@@ -5,47 +5,19 @@
         <link rel="stylesheet" type="text/css" href="Assets /Lingo.css">
     </head>
     <body>
-        <div id='msgBox'>Raad het woord</div>
-<div id="smallMsg">Groen = Goede letter, Geel = verkeerde plek</div>
+    <h1 id="titel">Welkom bij Lingo</h1>
+    <div id="info">Groen = letter staat op de goede plaats, Geel = letter staat op de verkeerde letter</div>
+        
 <div id="container">
-  <div id="rij1">
-    <div class="square default"></div>
-    <div class="square default"></div>
-    <div class="square default"></div>
-    <div class="square default"></div>
-    <div class="square default"></div>
-  </div>
-  <div id="rij2">
-    <div class="square default"></div>
-    <div class="square default"></div>
-    <div class="square default"></div>
-    <div class="square default"></div>
-    <div class="square default"></div>
-  </div>
-  <div id="rij3">
-    <div class="square default"></div>
-    <div class="square default"></div>
-    <div class="square default"></div>
-    <div class="square default"></div>
-    <div class="square default"></div>
-  </div>
-  <div id="rij4">
-    <div class="square default"></div>
-    <div class="square default"></div>
-    <div class="square default"></div>
-    <div class="square default"></div>
-    <div class="square default"></div>
-  </div>
-  <div id="rij5">
-    <div class="square default"></div>
-    <div class="square default"></div>
-    <div class="square default"></div>
-    <div class="square default"></div>
-    <div class="square default"></div>
-  </div>
+    <div id="rij1"></div>
+
+    <div id="raden"></div>
+
+    <div id="check"></div>
+    <button id="check" type="button">Klik</button>
+
 </div>
-<input id="guess" onkeypress="submitguess(this)" placeholder='Type het woord!'>
-<button id="button" class="invisible" onClick="playagain()">Play Again?</button>
+
         <script src="Assets /lingo-nl.js"></script>
     </body>
 </html>
