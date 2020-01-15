@@ -481,57 +481,68 @@ var words = [
 
 	var vakjes;
 
-	var row1 = document.getElementById("rij1");
+	var poging = 0;
 
-	for(vakjes = 0; vakjes<25; vakjes++){
+	const row1 = document.getElementById("row1");
+		for(rij = 0; rij < 5; rij++){
+			for(kolom = 0; kolom < 5; kolom++){
+
 		var newDiv = document.createElement("input");
-		newDiv.type = "text";
-		newDiv.readOnly;
-		rij1.appendChild(newDiv);
+		row1.appendChild(newDiv);
 		newDiv.style.background = "white";
-    	newDiv.style.verticalAlign = top;
-    	newDiv.style.marginTop = 4;
-    	newDiv.style.display = "inline-block";
-    	newDiv.style.height = '1.25em';
-    	newDiv.style.width = '1.25em';
-    	newDiv.style.textAlign = 'center';
-    	newDiv.style.fontSize = '3.5em';
+		newDiv.style.verticalAlign = top;
+		newDiv.style.marginTop = 4;
+		newDiv.style.display = "inline-block";
+		newDiv.style.height = '1.25em';
+		newDiv.style.width = '1.25em';
+		newDiv.style.textAlign = 'center';
+		newDiv.style.fontSize = '3.5em';
 		newDiv.style.fontFamily = 'Lato', 'sans-serif';
-		newDiv.id += 'vakje'+ vakjes;
-	
-	}
-
-
-	var randomwoord = words[Math.floor(Math.random()* words.length)];
-
-	var textArray = randomwoord.split('');
-		document.getElementById("vakje0").value = textArray[0];
-		console.log(textArray);
-
-	var raden = document.createElement("input");
-	var check = document.createElement("check");
-	document.body.appendChild(raden);
-	document.body.appendChild(check);
-	raden.style.marginLeft = "50%";
-	check.innerHTML = "Check";
-
-function check(){
-
-	for (i = 0; i < random.length; i++) {
-		if(checkWoord[i] == random[i]) {
-			document.getElementById("vakje" + (i+1)).innerHTML = random[i];
-			document.getElementById("vakje" + (i+1)).style.backgroundColor = "green";
-			raadWoord[i] = "*";
-		} else if (raadWoord.indexOf(checkWoord[i])>-1) {
-			document.getElementById("vakje" + (i+1)).innerHTML = checkWoord[i];
-			document.getElementById("vakje" + (i+1)).style.backgroundColor = "yellow";
-		} else {
-			document.getElementById("vakje" + (i+1)).innerHTML = checkWoord[i];
-			document.getElementById("vakje" + (i+1)).style.backgroundColor = "red";
+		newDiv.id += 'vakje'+ rij +'-' + kolom;
+			}
 		}
-	}
 
-}
+		var randomwoord = words[Math.floor(Math.random() * words.length)];
+		console.log(randomwoord);
+		
+
+		var textArray = randomwoord.split('');
+			document.getElementById("vakje0-0").value = textArray[0];
+			console.log(textArray);
+
+		document.getElementById("check").addEventListener('click',checkfunction);
+
+
+
+
+		function checkfunction(){
+			
+			var antwoord = document.getElementById("antwoord");
+			var antwoord= antwoord.value.split('');
+			console.log(antwoord);
+		
+			for (i = 0; i < antwoord.length; i++) {
+				if(antwoord[i] == randomwoord[i]) {
+					document.getElementById("vakje" + poging + "-" + i).value = antwoord[i];
+					document.getElementById("vakje" + poging+ "-" + i).style.backgroundColor = "green";
+					
+				} else if (randomwoord.indexOf(antwoord[i])>-1) {
+					document.getElementById("vakje" + poging + "-" + i).value = antwoord[i];
+					document.getElementById("vakje" + poging + "-" + i).style.backgroundColor = "yellow";
+					alert("Het letter staat op de verkeerde plek");
+				} else {
+					document.getElementById("vakje" + poging + "-" +  i).value = antwoord[i];
+					document.getElementById("vakje" + poging + "-" +  i).style.backgroundColor = "red";
+				} 
+		    } 
+			 poging++;
+		}
+		
+	
+
+		
+
+
 
 
 
