@@ -479,66 +479,95 @@ var words = [
 	"zever",
 	"zeeen"];
 
+	//Variabele voor de vakjes.
 	var vakjes;
+	//
 
+	//Variabele voor de pogingen die je doet.
 	var poging = 0;
-
-	const row1 = document.getElementById("row1");
+	//
+	
+	//De hoeveel rijen en kolommen van de lingo indelingen(Uiterlijkheid van het lingo spel).
+	const rij1 = document.getElementById("rij1");
 		for(rij = 0; rij < 5; rij++){
 			for(kolom = 0; kolom < 5; kolom++){
 
-		var newDiv = document.createElement("input");
-		row1.appendChild(newDiv);
-		newDiv.style.background = "white";
-		newDiv.style.verticalAlign = top;
-		newDiv.style.marginTop = 4;
-		newDiv.style.display = "inline-block";
-		newDiv.style.height = '1.25em';
-		newDiv.style.width = '1.25em';
-		newDiv.style.textAlign = 'center';
-		newDiv.style.fontSize = '3.5em';
-		newDiv.style.fontFamily = 'Lato', 'sans-serif';
-		newDiv.id += 'vakje'+ rij +'-' + kolom;
-			}
-		}
+				var newDiv = document.createElement("input");
+				rij1.appendChild(newDiv);
+				newDiv.style.background = "white";
+				newDiv.style.verticalAlign = top;
+				newDiv.style.marginTop = 4;
+				newDiv.style.display = "inline-block";
+				newDiv.style.height = '1.25em';
+				newDiv.style.width = '1.25em';
+				newDiv.style.textAlign = 'center';
+				newDiv.style.fontSize = '3.5em';
+				newDiv.style.fontFamily = 'Lato', 'sans-serif';
+				newDiv.id += 'vakje'+ rij +'-' + kolom;
+					}
+				}
 
+		//Variabele van de woorden het pakt een random woord uit het var>words bovenin.
 		var randomwoord = words[Math.floor(Math.random() * words.length)];
-		console.log(randomwoord);
-		
+				console.log(randomwoord);
+		//
 
+		//Variabele voor het random woord en dat woord word gesplit zodat javascript de letters in indexes verdeeld.
 		var textArray = randomwoord.split('');
 			document.getElementById("vakje0-0").value = textArray[0];
-			console.log(textArray);
+				console.log(textArray);
+		//
+		
 
+		//Roept de functie aan om het lingo spel te laten werken.
 		document.getElementById("check").addEventListener('click',checkfunction);
+		//
 
-
-
-
+		//De functie van het checken van het woord dat word gekozen uit het "variabele>randomwoord".
 		function checkfunction(){
 			
 			var antwoord = document.getElementById("antwoord");
 			var antwoord= antwoord.value.split('');
 			console.log(antwoord);
-		
-			for (i = 0; i < antwoord.length; i++) {
-				if(antwoord[i] == randomwoord[i]) {
-					document.getElementById("vakje" + poging + "-" + i).value = antwoord[i];
-					document.getElementById("vakje" + poging+ "-" + i).style.backgroundColor = "green";
-					
-				} else if (randomwoord.indexOf(antwoord[i])>-1) {
-					document.getElementById("vakje" + poging + "-" + i).value = antwoord[i];
-					document.getElementById("vakje" + poging + "-" + i).style.backgroundColor = "yellow";
-					alert("Het letter staat op de verkeerde plek");
-				} else {
-					document.getElementById("vakje" + poging + "-" +  i).value = antwoord[i];
-					document.getElementById("vakje" + poging + "-" +  i).style.backgroundColor = "red";
-				} 
-		    } 
-			 poging++;
-		}
-		
 	
+	
+			for (i = 0; i < antwoord.length; i++) {
+				document.getElementById("vakje" + poging + "-" + i).value = antwoord[i];
+			}
+
+			for (i = 0; i < antwoord.length; i++) {
+				if(antwoord[i] == textArray[i]) {
+					document.getElementById("vakje" + poging+ "-" + i).style.backgroundColor = "green";
+					document.getElementById("vakje" + poging + "-" +  i).style.borderRadius = "0%";
+					textArray[i] = "*";
+					antwoord[i] = "-";
+				}
+				
+			for(i = 0; i < antwoord.length; i++){
+				if (antwoord[i] != "-"){
+				if (textArray.indexOf(antwoord[i])>0) {
+					document.getElementById("vakje" + poging + "-" + i).style.backgroundColor = "yellow";
+					document.getElementById("vakje" + poging + "-" +  i).style.borderRadius = "50%";
+					var position = textArray.indexOf(antwoord[i]);
+					antwoord[position] = "/";
+					textArray[i] = "*";
+				} else if(antwoord[position] = "/") {
+					document.getElementById("vakje" + poging + "-" +  i).style.backgroundColor = "red";
+					document.getElementById("vakje" + poging + "-" +  i).style.borderRadius = "0%";
+				} else {
+					document.getElementById("vakje" + poging + "-" +  i).style.backgroundColor = "red";
+					document.getElementById("vakje" + poging + "-" +  i).style.borderRadius = "0%";
+				}
+			
+			}
+			}
+		}
+			poging++;
+		}
+			
+		//
+
+	console.log(checkfunction);//console voor de functie om te kijken hoe het stap voor stap te werk te gaat.
 
 		
 
